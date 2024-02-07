@@ -19,8 +19,6 @@ class Client extends BaseClient {
         if (typeof options.clientInfo.version != "string") throw "Client Version must be in a string format";
         if (options.clientInfo.version.split(".").length < 1) throw "Client Version must contain at least a . (dot)";
         if (!options.clientInfo.version.split(".").every(v=>!isNaN(Number(v)))) throw "Client Version must contain numbers between dots";
-
-        console.log(options);
     }
 }
 
