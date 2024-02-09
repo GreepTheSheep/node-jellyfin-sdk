@@ -61,7 +61,8 @@ class APIRequest {
                 this.client.emit('apiResponse', this, response);
 
                 if (response.ok) {
-                    return await response.json();
+                    if (response.status == 204) return {status: response.status, message: response.statusText};
+                    else return await response.json();
                 } else {
                     const json = await response.json();
                     if (json) {
