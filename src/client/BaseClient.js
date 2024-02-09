@@ -68,6 +68,30 @@ class BaseClient extends EventEmitter {
     }
 
     /**
+     * Disconnects from the Jellyfin server
+     *
+     * <info>When disconnected, a {@link Client#disconnected} event is fired, you can also use promises like `then()` or `await` if you don't want to use events.</info>
+     * @returns {Promise<void>}
+     */
+    async logout() {
+        if (this.accessToken == null) throw "Not connected";
+
+        try {
+            await this.#apiReq("Sessions/Logout", "POST");
+
+            this.accessToken = null;
+
+            /**
+             * Emitted when the client was disconnected successfully to the Jellyfin server.
+             * @event Client#disconnected
+             */
+            this.emit('disconnected');
+        } catch (err) {
+            throw "Logout failed: " + err;
+        }
+    }
+
+    /**
      * Do an API request
      * @param {string} url The URL to request
      * @param {string} [method="GET"] The HTTP method to use
