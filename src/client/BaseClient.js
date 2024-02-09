@@ -33,9 +33,12 @@ class BaseClient extends EventEmitter {
      *
      * <warn>The parameters should be kept private at all times.</warn>
      * <info>You should use environment variables to keep it private.</info>
+     *
+     * <info>When authenticated, a {@link Client#ready} event is fired, you can also use promises like `then()` or `await` if you don't want to use events.</info>
      * @param {?string} username The username of the user to authenticate
      * @param {?string} password The password of the user to authenticate
      * @param {?string} baseUrl The base URL of the Jellyfin server
+     * @returns {Promise<void>}
      */
     async login(username = null, password = null, baseUrl = null) {
         if (username != null) this.options.username = username;
@@ -53,6 +56,12 @@ class BaseClient extends EventEmitter {
             }));
 
             this.accessToken = res.AccessToken;
+
+            /**
+             * Emitted when the client was authenticated successfully to the Jellyfin server.
+             * @event Client#ready
+             */
+            this.emit('ready');
         } catch (err) {
             throw "Authentication failed: " + err;
         }
