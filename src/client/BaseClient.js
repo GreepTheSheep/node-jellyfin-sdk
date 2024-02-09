@@ -20,6 +20,42 @@ class BaseClient extends EventEmitter {
          * @readonly
          */
         this.options = Util.mergeDefault(new defaultOptions(this), options);
+
+        /**
+         * The access token which will be used to make requests to the Jellyfin API
+         * @type {?string}
+         */
+        this.accessToken = null;
+    }
+
+    /**
+     * Authenticate to the Jellyfin server
+     *
+     * <warn>The parameters should be kept private at all times.</warn>
+     * <info>You should use environment variables to keep it private.</info>
+     * @param {?string} username The username of the user to authenticate
+     * @param {?string} password The password of the user to authenticate
+     * @param {?string} baseUrl The base URL of the Jellyfin server
+     */
+    async login(username = null, password = null, baseUrl = null) {
+        if (username != null) this.options.username = username;
+        if (password != null) this.options.password = password;
+        if (baseUrl != null) this.options.baseUrl = baseUrl;
+
+        if (this.options.username == null) throw "The Jellyfin username is not filled in, please fill in one in the client options";
+        if (this.options.password == null) throw "The Jellyfin password is not filled in, please fill in one in the client options";
+        if (this.options.baseUrl == null) throw "The Jellyfin Base URL is not filled in, please fill in one in the client options";
+
+        try {
+            let res = await this.#apiReq("Users/AuthenticateByName", "POST", JSON.stringify({
+                "Username": this.options.username,
+                "Pw": this.options.password
+            }));
+
+            this.accessToken = res.AccessToken;
+        } catch (err) {
+            throw "Authentication failed: " + err;
+        }
     }
 
     /**

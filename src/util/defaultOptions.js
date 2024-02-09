@@ -16,6 +16,40 @@ class defaultOptions {
          */
         this.#baseClient = baseClient;
 
+        if (!this.baseUrl && 'JELLYFIN_URL' in process.env) {
+            /**
+             * The default Jellyfin URL to use. It must contain the protocol. And should contain a subpath (ended with a slash), if there's one.
+             *
+             * If present, this defaults to `process.env.JELLYFIN_URL` when instantiating the client
+             * @type {?string}
+             */
+            this.baseUrl = process.env.JELLYFIN_URL;
+        } else {
+            this.baseUrl = null;
+        }
+
+        if (!this.username && 'JELLYFIN_USERNAME' in process.env) {
+            /**
+             * The Jellyfin Username to use.
+             * If present, this defaults to `process.env.JELLYFIN_USERNAME` when instantiating the client
+             * @type {?string}
+             */
+            this.username = process.env.JELLYFIN_USERNAME;
+        } else {
+            this.username = null;
+        }
+
+        if (!this.password && 'JELLYFIN_PASSWORD' in process.env) {
+            /**
+             * The Jellyfin Password to use.
+             * If present, this defaults to `process.env.JELLYFIN_PASSWORD` when instantiating the client
+             * @type {?string}
+             */
+            this.password = process.env.JELLYFIN_PASSWORD;
+        } else {
+            this.password = null;
+        }
+
         /**
          * Whether is in dev mode (Uses more logging traces in the core).
          * @type {boolean}

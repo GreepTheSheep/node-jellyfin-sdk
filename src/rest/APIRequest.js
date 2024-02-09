@@ -26,11 +26,12 @@ class APIRequest {
      * @returns {Promise<Object>} The response
      */
     do(url, method = 'GET', body = null) {
-        this.url = url;
+        this.url = new URL(url, this.client.options.baseUrl).toString();
         // Creating options
         const headers = new fetch.Headers({
             "Accept"       : "application/json",
-            "Content-Type" : "application/json"
+            "Content-Type" : "application/json",
+            "Authorization": this.#MediaBrowserString()
         });
         this.options = {
             headers,
@@ -73,6 +74,28 @@ class APIRequest {
                 if (this.client.options.dev) error = error + " ("+this.url+")";
                 throw error;
             });
+    }
+
+    /**
+     * @private
+     * @returns {string}
+     */
+    #MediaBrowserString() {
+        let MediaBrowserObj = {
+            "Client": this.client.options.clientInfo.name,
+            "Device": this.client.options.deviceInfo.name,
+            "DeviceId": this.client.options.deviceInfo.id,
+            "Version": this.client.options.clientInfo.version
+        };
+        if (this.client.accessToken != null) MediaBrowserObj["Token"] = this.client.accessToken;
+
+        let res = "MediaBrowser";
+        for (let i = 0; i < Object.entries(MediaBrowserObj).length; i++) {
+            let [key,value] = Object.entries(MediaBrowserObj)[i];
+            res += ` ${key}=${value}`;
+            if (i < Object.entries(MediaBrowserObj).length-1) res += ",";
+        }
+        return res;
     }
 }
 
