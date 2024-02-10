@@ -31,6 +31,12 @@ class BaseClient extends EventEmitter {
         this.accessToken = null;
 
         /**
+         * The server identifier
+         * @type {?string}
+         */
+        this.serverId = null;
+
+        /**
          * The connected user of the client.
          * @type {?User}
          */
@@ -65,6 +71,7 @@ class BaseClient extends EventEmitter {
             }));
 
             this.accessToken = res.AccessToken;
+            this.serverId = res.ServerId;
             this.user = new User(this, res.User);
 
             /**
