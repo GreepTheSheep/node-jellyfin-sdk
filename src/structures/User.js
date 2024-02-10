@@ -131,6 +131,9 @@ class User {
     }
 }
 
+/**
+ * Represents the configuration of the user
+ */
 class UserConfiguration {
     #data;
     constructor(user, data) {
@@ -269,6 +272,9 @@ class UserConfiguration {
     }
 }
 
+/**
+ * Represents the policy of the user
+ */
 class UserPolicy {
     #data;
     constructor(user, data) {
