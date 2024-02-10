@@ -73,6 +73,7 @@ class BaseClient extends EventEmitter {
             this.accessToken = res.AccessToken;
             this.serverId = res.ServerId;
             this.user = new User(this, res.User);
+            // TODO: SessionInfo
 
             /**
              * Emitted when the client was authenticated successfully to the Jellyfin server.
