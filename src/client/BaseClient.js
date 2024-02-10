@@ -3,6 +3,9 @@ const APIRequest = require('../rest/APIRequest');
 const Util = require('../util/Util');
 const defaultOptions = require('../util/defaultOptions');
 
+// Structures
+const User = require('../structures/User');
+
 /**
  * The Base Client
  * @extends {EventEmitter}
@@ -26,6 +29,12 @@ class BaseClient extends EventEmitter {
          * @type {?string}
          */
         this.accessToken = null;
+
+        /**
+         * The connected user of the client.
+         * @type {?User}
+         */
+        this.user = null;
     }
 
     /**
@@ -56,6 +65,7 @@ class BaseClient extends EventEmitter {
             }));
 
             this.accessToken = res.AccessToken;
+            this.user = new User(this, res.User);
 
             /**
              * Emitted when the client was authenticated successfully to the Jellyfin server.
