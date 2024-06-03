@@ -28,6 +28,7 @@ class SessionInfo {
 
     /**
      * The User ID of the Session
+     * @type {string}
      */
     get userId() {
         return this.#data.UserId;
