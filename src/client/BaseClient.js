@@ -5,6 +5,7 @@ const defaultOptions = require('../util/defaultOptions');
 
 // Structures
 const User = require('../structures/User');
+const SessionInfo = require('../structures/SessionInfo');
 
 /**
  * The Base Client
@@ -73,7 +74,7 @@ class BaseClient extends EventEmitter {
             this.accessToken = res.AccessToken;
             this.serverId = res.ServerId;
             this.user = new User(this, res.User);
-            // TODO: SessionInfo
+            this.sessionInfo = new SessionInfo(this, res.SessionInfo);
 
             /**
              * Emitted when the client was authenticated successfully to the Jellyfin server.
