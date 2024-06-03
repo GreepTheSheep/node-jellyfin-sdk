@@ -131,7 +131,8 @@ class defaultOptionsDeviceInfo {
         if (!this.name && 'JELLYFIN_DEVICE_NAME' in process.env) {
             /**
              * The default Client Name to use.
-             * If present, this defaults to `process.env.JELLYFIN_CLIENT_NAME` when instantiating the client
+             * If present, this defaults to `process.env.JELLYFIN_CLIENT_NAME` when instantiating the client,
+             * else this uses "node-jellyfin"
              * @type {string}
              */
             this.name = process.env.JELLYFIN_DEVICE_NAME;
