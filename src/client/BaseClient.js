@@ -66,7 +66,7 @@ class BaseClient extends EventEmitter {
         if (this.options.baseUrl == null) throw "The Jellyfin Base URL is not filled in, please fill in one in the client options";
 
         try {
-            let res = await this.#apiReq("Users/AuthenticateByName", "POST", JSON.stringify({
+            let res = await this.apiReq("Users/AuthenticateByName", "POST", JSON.stringify({
                 "Username": this.options.username,
                 "Pw": this.options.password
             }));
@@ -96,7 +96,7 @@ class BaseClient extends EventEmitter {
         if (this.accessToken == null) throw "Not connected";
 
         try {
-            await this.#apiReq("Sessions/Logout", "POST");
+            await this.apiReq("Sessions/Logout", "POST");
 
             this.accessToken = null;
 
@@ -111,17 +111,16 @@ class BaseClient extends EventEmitter {
     }
 
     /**
-     * Do an API request
-     * @param {string} url The URL to request
+     * Do an API request, this is not recommended to use
+     * @param {string} path The path to request
      * @param {string} [method="GET"] The HTTP method to use
      * @param {?Object} [body=null] The data to send
      * @returns {Promise<Object>} A promise that resolves to the API response
-     * @private
      */
-    async #apiReq(url, method = 'GET', body = null){
+    async apiReq(path, method = 'GET', body = null){
         const request = new APIRequest(this);
 
-        return await request.do(url, method, body);
+        return await request.do(path, method, body);
     }
 
 }
