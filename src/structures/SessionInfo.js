@@ -1,8 +1,14 @@
+const Client = require("../client/Client"); // eslint-disable-line no-unused-vars
+
 /**
  * Represents a Session Info on Jellyfin
  */
 class SessionInfo {
     #data;
+    /**
+     * @param {Client} client
+     * @param {object} data
+     */
     constructor(client, data) {
         /**
          * The client that instantiated this

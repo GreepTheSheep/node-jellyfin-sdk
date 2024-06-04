@@ -8,6 +8,7 @@ const pkg = require('../../package.json');
  */
 class defaultOptions {
     #baseClient;
+    /** @param {BaseClient} baseClient  */
     constructor(baseClient) {
         /**
          * The base client instance.
@@ -72,6 +73,7 @@ class defaultOptions {
 
 class defaultOptionsClientInfo {
     #defaultOptions;
+    /** @param {defaultOptions} defaultOptions  */
     constructor(defaultOptions) {
         /**
          * Default options.
@@ -120,6 +122,7 @@ class defaultOptionsClientInfo {
 
 class defaultOptionsDeviceInfo {
     #defaultOptions;
+    /** @param {defaultOptions} defaultOptions  */
     constructor(defaultOptions) {
         /**
          * Default options.
