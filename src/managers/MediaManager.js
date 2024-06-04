@@ -1,4 +1,3 @@
-// https://jellyfin.greep.fr/UserViews?userId=402ed089f32743e1a04017cd64fe85c4
 const Client = require("../client/Client"); // eslint-disable-line no-unused-vars
 const MediaCollection = require('../structures/MediaCollection');
 
