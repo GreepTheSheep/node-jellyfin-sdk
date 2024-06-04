@@ -1,8 +1,6 @@
 const Client = require("../client/Client"); // eslint-disable-line no-unused-vars
 
-/**
- * Represents a user on Jellyfin.
- */
+/** Represents a user on Jellyfin. */
 class User {
     #data;
     constructor(client, data) {

@@ -1,8 +1,8 @@
 const Client = require("../client/Client"); // eslint-disable-line no-unused-vars
 const MediaCollection = require('../structures/MediaCollection');
 
+/** Represents the media library manager. */
 class MediaManager {
-    /** @param {Client} client */
     constructor(client){
         /**
          * The client instance.

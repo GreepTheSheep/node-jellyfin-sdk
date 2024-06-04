@@ -3,12 +3,9 @@ const path = require('path'),
     crypto = require('crypto');
 const pkg = require('../../package.json');
 
-/**
- * The default options.
- */
+/** The configuration */
 class defaultOptions {
     #baseClient;
-    /** @param {BaseClient} baseClient  */
     constructor(baseClient) {
         /**
          * The base client instance.
@@ -71,9 +68,9 @@ class defaultOptions {
     }
 }
 
+/** Represents the client info category in the configuration. */
 class defaultOptionsClientInfo {
     #defaultOptions;
-    /** @param {defaultOptions} defaultOptions  */
     constructor(defaultOptions) {
         /**
          * Default options.
@@ -120,9 +117,9 @@ class defaultOptionsClientInfo {
     }
 }
 
+/** Represents the device info category in the configuration. */
 class defaultOptionsDeviceInfo {
     #defaultOptions;
-    /** @param {defaultOptions} defaultOptions  */
     constructor(defaultOptions) {
         /**
          * Default options.
