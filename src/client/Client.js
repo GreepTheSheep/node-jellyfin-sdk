@@ -1,6 +1,9 @@
 const BaseClient = require('./BaseClient');
 const defaultOptions = require('../util/defaultOptions'); // eslint-disable-line no-unused-vars
 
+// Managers
+const MediaManager = require("../managers/MediaManager");
+
 /**
  * Instantiates a new client. This is the entry point.
  * @extends {BaseClient}
@@ -19,6 +22,12 @@ class Client extends BaseClient {
         if (typeof options.clientInfo.version != "string") throw "Client Version must be in a string format";
         if (options.clientInfo.version.split(".").length < 1) throw "Client Version must contain at least a . (dot)";
         if (!options.clientInfo.version.split(".").every(v=>!isNaN(Number(v)))) throw "Client Version must contain numbers between dots";
+
+        /**
+         * The media manager
+         * @type {MediaManager}
+         */
+        this.media = new MediaManager(this);
     }
 }
 
