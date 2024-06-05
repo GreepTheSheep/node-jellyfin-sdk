@@ -609,11 +609,6 @@ module.exports = User;
 
 /**
  * All available subtitle playback modes.
- * * `Default`
- * * `Always`
- * * `OnlyForced`
- * * `None`
- * * `Smart`
  * @typedef {"Default" | "Always" | "OnlyForced" | "None" | "Smart"} SubtitleModes
  */
 
@@ -628,22 +623,10 @@ module.exports = User;
 
 /**
  * All available unrated items to block.
- * * `Movie`
- * * `Trailer`
- * * `Series`
- * * `Music`
- * * `Book`
- * * `LiveTvChannel`
- * * `LiveTvProgram`
- * * `ChannelContent`
- * * `Other`
  * @typedef {"Movie" | "Trailer" | "Series" | "Music" | "Book" | "LiveTvChannel" | "LiveTvProgram" | "ChannelContent" | "Other"} BlockUnratedItems
  */
 
 /**
  * All available SyncPlay access levels.
- * * `CreateAndJoinGroups`
- * * `JoinGroups`
- * * `None`
  * @typedef {"CreateAndJoinGroups" | "JoinGroups" | "None"} SyncPlayAccess
  */
