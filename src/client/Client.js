@@ -25,14 +25,20 @@ class Client extends BaseClient {
 
     /**
      * Get the collections list (User View)
+     * @param {Array<PresetView>} [presetViews=[]] Preset views.
+     * @param {boolean} [includeHidden=false] Whether or not to include hidden content.
+     * @param {boolean} [includeExternalContent=false] Whether or not to include external views such as channels or live tv.
      * @returns {Promise<Array<Item>>}
      */
-    async listCollections(){
+    async listCollections(presetViews = [], includeHidden = false, includeExternalContent = false){
         const searchParams = new URLSearchParams();
-        searchParams.set("userId", this.client.user.id);
+        searchParams.set("userId", this.user.id);
+        searchParams.set("includeExternalContent", includeExternalContent);
+        searchParams.set("presetViews", presetViews.join(","));
+        searchParams.set("includeHidden", includeHidden);
         const res = await this.apiReq("UserViews?" + searchParams.toString());
         const array = [];
-        if (res.Items.length > 0) { // check all news from the page 0
+        if (res.Items.length > 0) {
             for (let i = 0; i < res.Items.length; i++) {
                 let library = new Item(this.client, res.Items[i]);
                 array.push(library);
@@ -43,3 +49,8 @@ class Client extends BaseClient {
 }
 
 module.exports = Client;
+
+/**
+ * All available preset views.
+ * @typedef {"unknown" | "movies" | "tvshows" | "music" | "musicvideos" | "trailers" | "homevideos" | "boxsets" | "books" | "photos" | "livetv" | "playlists" | "folders"} PresetView
+ */
