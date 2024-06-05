@@ -281,7 +281,7 @@ class Item {
     }
 
     /**
-     * The channel identifier of the item
+     * The channel name of the item
      * @type {?string}
      */
     get channelName() {
@@ -289,7 +289,7 @@ class Item {
     }
 
     /**
-     * The channel identifier of the item
+     * The overview of the item
      * @type {?string}
      */
     get overview() {
@@ -1207,7 +1207,7 @@ module.exports = Item;
  */
 
 /**
- * All available days of week.
+ * All available types of video.
  * @typedef {"VideoFile" | "Iso" | "Dvd" | "BluRay"} VideoType
  */
 
