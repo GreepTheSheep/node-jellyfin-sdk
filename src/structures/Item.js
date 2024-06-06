@@ -1,4 +1,5 @@
 const Client = require("../client/Client"); // eslint-disable-line no-unused-vars
+const MediaSourceInfo = require("./MediaSourceInfo");
 
 /** Represents a media item (could be a collection). */
 class Item {
@@ -220,10 +221,10 @@ class Item {
 
     /**
      * An array of media sources of the item
-     * @type {?Array<object>} TODO: MediaSourceInfo
+     * @type {?Array<MediaSourceInfo>}
      */
     get mediaSources() {
-        return this.#data.MediaSources;
+        return new MediaSourceInfo(this, this.#data.MediaSources);
     }
 
     /**
