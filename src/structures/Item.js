@@ -1,7 +1,7 @@
 const Client = require("../client/Client"); // eslint-disable-line no-unused-vars
 const MediaSourceInfo = require("./MediaSourceInfo");
 
-/** Represents a media item (could be a collection). */
+/** Represents a media item (could be a movie, a series, an episode, an album, a collection...). */
 class Item {
     #data;
     constructor(client, data) {
