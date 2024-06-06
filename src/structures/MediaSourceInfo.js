@@ -1,11 +1,12 @@
 const Item = require("./Item"); // eslint-disable-line no-unused-vars
+const MediaStreamInfo = require("./MediaStreamInfo");
 
 /** Represents informations from a media source. */
 class MediaSourceInfo {
     #data;
     constructor(item, data) {
         /**
-         * The client that instantiated this
+         * The item that instantiated this
          * @type {Item}
          */
         this.item = item;
@@ -230,10 +231,10 @@ class MediaSourceInfo {
     }
 
     /**
-     * @type {?Array<object>} TODO: MeiaStream
+     * @type {?Array<MediaStreamInfo>}
      */
     get mediaStreams() {
-        return this.#data.MediaStreams;
+        return this.#data.MediaStreams.map(m=> new MediaStreamInfo(this.item, m));
     }
 
     /**

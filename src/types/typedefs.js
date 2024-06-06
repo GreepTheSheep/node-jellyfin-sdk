@@ -167,3 +167,28 @@
  * All available SyncPlay access levels.
  * @typedef {"CreateAndJoinGroups" | "JoinGroups" | "None"} SyncPlayAccess
  */
+
+/**
+ * All available video ranges.
+ * @typedef {"Unknown" | "SDR" | "HDR"} VideoRange
+ */
+
+/**
+ * All available video ranges types.
+ * @typedef {"Unknown" | "SDR" | "HDR10" | "HLG" | "DOVI" | "DOVIWithHDR10" | "DOVIWithHLG" | "DOVIWithSDR" | "HDR10Plus"} VideoRangeType
+ */
+
+/**
+ * All available audio spatial formats.
+ * @typedef {"None" | "DolbyAtmos" | "DTSX"} AudioSpatialFormat
+ */
+
+/**
+ * All available media stream types.
+ * @typedef {"Audio" | "Video" | "Subtitle" | "EmbeddedImage" | "Data" | "Lyric"} MediaStreamType
+ */
+
+/**
+ * All available media stream delivery methods.
+ * @typedef {"Encode" | "Embed" | "External" | "Hls" | "Drop"} MediaStreamDeliveryMethod
+ */

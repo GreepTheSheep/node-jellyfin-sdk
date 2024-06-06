@@ -1,5 +1,6 @@
 const Client = require("../client/Client"); // eslint-disable-line no-unused-vars
 const MediaSourceInfo = require("./MediaSourceInfo");
+const MediaStreamInfo = require("./MediaStreamInfo");
 
 /** Represents a media item (could be a movie, a series, an episode, an album, a collection...). */
 class Item {
@@ -224,7 +225,7 @@ class Item {
      * @type {?Array<MediaSourceInfo>}
      */
     get mediaSources() {
-        return new MediaSourceInfo(this, this.#data.MediaSources);
+        return this.#data.MediaSources.map(m=>new MediaSourceInfo(this, m));
     }
 
     /**
@@ -669,10 +670,10 @@ class Item {
     }
 
     /**
-     * @type {?Array<object>} TODO: MediaStream
+     * @type {?Array<MediaStreamInfo>}
      */
     get mediaStreams() {
-        return this.#data.MediaStreams;
+        return this.#data.MediaStreams.map(m=>new MediaStreamInfo(this, m));
     }
 
     /**
