@@ -49,8 +49,3 @@ class Client extends BaseClient {
 }
 
 module.exports = Client;
-
-/**
- * All available preset views.
- * @typedef {"unknown" | "movies" | "tvshows" | "music" | "musicvideos" | "trailers" | "homevideos" | "boxsets" | "books" | "photos" | "livetv" | "playlists" | "folders"} PresetView
- */

@@ -1,4 +1,9 @@
 /**
+ * All available preset views.
+ * @typedef {"unknown" | "movies" | "tvshows" | "music" | "musicvideos" | "trailers" | "homevideos" | "boxsets" | "books" | "photos" | "livetv" | "playlists" | "folders"} PresetView
+ */
+
+/**
  * All available extra types.
  * @typedef {"Unknown" | "Clip" | "Trailer" | "BehindTheScenes" | "DeletedScene" | "Interview" | "Scene" | "Sample" | "ThemeSong" | "ThemeVideo" | "Featurette" | "Short"} ExtraType
  */
