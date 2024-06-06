@@ -111,7 +111,7 @@
 
 /**
  * All available image orientations of an item.
- * @typedef {"TopLeft" | "TopRight" | "BottomRight" | "BottomLeft" | "LeftTop" | "RightTop" | "RightBottom" | "LeftBottom"} ImageOrientation
+ * @typedef {"TopLeft" | "TopRight" | "BottomRight" | "BottomLeft" | "LeftTop" | "RightTop" | "RightBottom" | "LeftBottom"} ItemImageOrientation
  */
 
 /**

@@ -225,6 +225,7 @@ class Item {
      * @type {?Array<MediaSourceInfo>}
      */
     get mediaSources() {
+        if (this.#data.MediaSources == null) return null;
         return this.#data.MediaSources.map(m=>new MediaSourceInfo(this, m));
     }
 
@@ -673,6 +674,7 @@ class Item {
      * @type {?Array<MediaStreamInfo>}
      */
     get mediaStreams() {
+        if (this.#data.MediaStreams == null) return null;
         return this.#data.MediaStreams.map(m=>new MediaStreamInfo(this, m));
     }
 
@@ -951,7 +953,7 @@ class Item {
     }
 
     /**
-     * @type {?ImageOrientation}
+     * @type {?ItemImageOrientation}
      */
     get imageOrientation() {
         return this.#data.ImageOrientation;

@@ -234,6 +234,7 @@ class MediaSourceInfo {
      * @type {?Array<MediaStreamInfo>}
      */
     get mediaStreams() {
+        if (this.#data.MediaStreams == null) return null;
         return this.#data.MediaStreams.map(m=> new MediaStreamInfo(this.item, m));
     }
 

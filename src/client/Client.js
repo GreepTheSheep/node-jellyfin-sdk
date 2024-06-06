@@ -28,7 +28,7 @@ class Client extends BaseClient {
      * @param {Array<PresetView>} [presetViews=[]] Preset views.
      * @param {boolean} [includeHidden=false] Whether or not to include hidden content.
      * @param {boolean} [includeExternalContent=false] Whether or not to include external views such as channels or live tv.
-     * @returns {Promise<Array<Item>>}
+     * @returns {Promise<Item[]>}
      */
     async listCollections(presetViews = [], includeHidden = false, includeExternalContent = false){
         const searchParams = new URLSearchParams();
