@@ -606,27 +606,3 @@ class UserPolicy {
 }
 
 module.exports = User;
-
-/**
- * All available subtitle playback modes.
- * @typedef {"Default" | "Always" | "OnlyForced" | "None" | "Smart"} SubtitleModes
- */
-
-/**
- * @typedef {Object} AccessSchedules
- * @property {number} Id The id of this instance.
- * @property {string} UserId The id of the associated user.
- * @property {"Sunday" | "Monday" | "Tuesday" | "Wednesday" | "Thursday" | "Friday" | "Saturday" | "Everyday" | "Weekday" | "Weekend"} DayOfWeek The day of week.
- * @property {number} StartHour The start hour.
- * @property {number} EndHour The end hour.
- */
-
-/**
- * All available unrated items to block.
- * @typedef {"Movie" | "Trailer" | "Series" | "Music" | "Book" | "LiveTvChannel" | "LiveTvProgram" | "ChannelContent" | "Other"} BlockUnratedItems
- */
-
-/**
- * All available SyncPlay access levels.
- * @typedef {"CreateAndJoinGroups" | "JoinGroups" | "None"} SyncPlayAccess
- */

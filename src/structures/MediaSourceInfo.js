@@ -209,21 +209,21 @@ class MediaSourceInfo {
     }
 
     /**
-     * @type {?import('./Item').VideoType}
+     * @type {?VideoType}
      */
     get videoType() {
         return this.#data.VideoType;
     }
 
     /**
-     * @type {?import('./Item').IsoType}
+     * @type {?IsoType}
      */
     get isoType() {
         return this.#data.IsoType;
     }
 
     /**
-     * @type {?import('./Item').Video3DFormat}
+     * @type {?Video3DFormat}
      */
     get video3DFormat() {
         return this.#data.Video3DFormat;
@@ -316,23 +316,3 @@ class MediaSourceInfo {
 }
 
 module.exports = MediaSourceInfo;
-
-/**
- * All available media source protocols.
- * @typedef {"File" | "Http" | "Rtmp" | "Rtsp" | "Udp" | "Rtp" | "Ftp"} MediaSourceInfoProtocol
- */
-
-/**
- * All available media source types.
- * @typedef {"Default" | "Grouping" | "Placeholder"} MediaSourceInfoType
- */
-
-/**
- * All available timestamp validation formats.
- * @typedef {"None" | "Zero" | "Valid"} MediaTimestampFormat
- */
-
-/**
- * All available media streaming protocols. Lowercase for backwards compatibility.
- * @typedef {"http" | "hls"} TranscodingSubProtocol
- */
