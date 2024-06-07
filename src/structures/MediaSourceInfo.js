@@ -1,4 +1,5 @@
 const Item = require("./Item"); // eslint-disable-line no-unused-vars
+const MediaAttachmentInfo = require("./MediaAttachmentInfo");
 const MediaStreamInfo = require("./MediaStreamInfo");
 
 /** Represents informations from a media source. */
@@ -239,10 +240,11 @@ class MediaSourceInfo {
     }
 
     /**
-     * @type {?Array<object>} TODO: MediaAttachment
+     * @type {?Array<MediaAttachmentInfo>}
      */
     get mediaAttachments() {
-        return this.#data.MediaAttachments;
+        if (this.#data.MediaAttachments == null) return null;
+        return this.#data.MediaAttachments.map(m=> new MediaAttachmentInfo(this.item, m));
     }
 
     /**
