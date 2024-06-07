@@ -46,6 +46,31 @@ class Client extends BaseClient {
         }
         return array;
     }
+
+    /**
+     * Gets items based on a query.
+     * @param {GetItemsParams} [params={}] The query params
+     * @returns {Promise<Item[]>}
+     */
+    async getItems(params = {}) {
+        const searchParams = new URLSearchParams();
+        searchParams.set("userId", this.user.id);
+        Object.keys(params).forEach(k=>{
+            if (params[k] != undefined || params[k] != null) {
+                if (Array.isArray(params[k])) searchParams.set(k, params[k].join(','));
+                else searchParams.set(k, params[k]);
+            }
+        });
+        const res = await this.apiReq("Items?" + searchParams.toString());
+        const array = [];
+        if (res.Items.length > 0) {
+            for (let i = 0; i < res.Items.length; i++) {
+                let library = new Item(this.client, res.Items[i]);
+                array.push(library);
+            }
+        }
+        return array;
+    }
 }
 
 module.exports = Client;
