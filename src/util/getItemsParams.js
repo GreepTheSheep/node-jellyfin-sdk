@@ -289,7 +289,7 @@ class GetItemsParams {
          * If specified, results will be filtered based on genre. This allows multiple.
          * @type {Array<string>}
          */
-        this.sortBy = [];
+        this.genres = [];
 
         /**
          * If specified, results will be filtered based on OfficialRating. This allows multiple.
@@ -307,7 +307,7 @@ class GetItemsParams {
          * If specified, results will be filtered based on production year. This allows multiple.
          * @type {Array<number>}
          */
-        this.tags = [];
+        this.years = [];
 
         /**
          * Include user data.
