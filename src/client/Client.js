@@ -59,10 +59,11 @@ class Client extends BaseClient {
         searchParams.set("userId", this.user.id);
         params = Util.mergeDefault(new getItemsParams(this), params);
         Object.keys(params).forEach(k=>{
-            if (params[k] != undefined || params[k] != null || (Array.isArray(params[k]) && params[k].length > 0)) {
-                if (Array.isArray(params[k])) searchParams.set(k, params[k].join(','));
-                else searchParams.set(k, params[k]);
-            }
+            if (Array.isArray(params[k]) && params[k].length > 0) searchParams.set(k, params[k].join(','));
+            else if (!Array.isArray(params[k]))
+                if (params[k] != undefined || params[k] != null) {
+                    searchParams.set(k, params[k]);
+                }
         });
         const res = await this.apiReq("Items?" + searchParams.toString());
         const array = [];
