@@ -1,5 +1,8 @@
 const Client = require("../client/Client"); // eslint-disable-line no-unused-vars
 
+/**
+ * The parameters to pass in {@link Client#getItems} method
+ */
 class GetItemsParams {
     #client;
     constructor(client) {
