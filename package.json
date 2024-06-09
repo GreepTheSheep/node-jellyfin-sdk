@@ -8,7 +8,7 @@
     "test": "eslint . && mocha --exit",
     "prepack": "tsc",
     "dts": "tsc",
-    "docs": "docgen --source src --custom docs/index.yml --output docs/docs.json",
+    "docs": "docgen -i ./src -c ./docs/index.yml -o docs/docs.json",
     "postinstall": "node ./postinstall.js"
   },
   "repository": {
