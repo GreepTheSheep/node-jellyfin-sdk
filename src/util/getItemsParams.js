@@ -210,9 +210,10 @@ class GetItemsParams {
 
         /**
          * When searching within folders, this determines whether or not the search will be recursive.
-         * @type {?boolean}
+         * @type {boolean}
+         * @default true
          */
-        this.recursive = undefined;
+        this.recursive = true;
 
         /**
          * Filter based on a search term.
@@ -500,9 +501,9 @@ class GetItemsParams {
         /**
          * Enable the total record count.
          * @type {boolean}
-         * @default true
+         * @default false
          */
-        this.enableTotalRecordCount = true;
+        this.enableTotalRecordCount = false;
 
         /**
          * Include image information in output.
