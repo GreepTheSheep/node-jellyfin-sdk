@@ -78,6 +78,43 @@ class APIRequest {
     }
 
     /**
+     * Makes a request to the API and returns an ArrayBuffer
+     * @param {string} url The URL
+     * @param {string} [method="GET"] The method
+     * @param {Object} [body=null] The body
+     * @returns {Promise<ArrayBuffer>} The response
+     */
+    doArrayBuffer(url, method = 'GET', body = null) {
+        this.url = new URL(url, this.client.options.baseUrl).toString();
+        // Creating options
+        const headers = new fetch.Headers({
+            "Authorization": this.#MediaBrowserString()
+        });
+        this.options = {
+            headers,
+            method,
+            body
+        };
+        this.client.emit('apiRequest', this);
+        return fetch(this.url, this.options)
+            .then(async response => {
+                this.client.emit('apiResponse', this, response);
+
+                if (response.ok) {
+                    if (response.status == 204) throw response.statusText;
+                    else return await response.arrayBuffer();
+                } else {
+                    const txt = await response.text();
+                    throw txt;
+                }
+            })
+            .catch(error => {
+                if (this.client.options.dev) error = error + " ("+this.url+")";
+                throw error;
+            });
+    }
+
+    /**
      * @private
      * @returns {string}
      */

@@ -111,7 +111,7 @@ class BaseClient extends EventEmitter {
     }
 
     /**
-     * Do an API request, this is not recommended to use
+     * Do an API request.
      * @param {string} path The path to request
      * @param {string} [method="GET"] The HTTP method to use
      * @param {?Object} [body=null] The data to send
@@ -121,6 +121,19 @@ class BaseClient extends EventEmitter {
         const request = new APIRequest(this);
 
         return await request.do(path, method, body);
+    }
+
+    /**
+     * Do an API request to get a binary content.
+     * @param {string} path The path to request
+     * @param {string} [method="GET"] The HTTP method to use
+     * @param {?Object} [body=null] The data to send
+     * @returns {Promise<ArrayBuffer>}
+     */
+    async apiReqArrayBuffer(path, method = 'GET', body = null){
+        const request = new APIRequest(this);
+
+        return await request.doArrayBuffer(path, method, body);
     }
 
 }

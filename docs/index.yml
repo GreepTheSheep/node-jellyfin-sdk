@@ -6,3 +6,9 @@
     - name: Contributing
       id: contributing
       path: ../../CONTRIBUTING.md
+
+- name: Examples
+  files:
+    - name: Download music
+      id: download-music
+      path: ../../examples/download-music.md

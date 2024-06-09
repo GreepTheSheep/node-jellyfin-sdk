@@ -4,6 +4,7 @@ const defaultOptions = require('../util/defaultOptions'); // eslint-disable-line
 const getItemsParams = require('../util/getItemsParams'); // eslint-disable-line no-unused-vars
 
 const Item = require('../structures/Item');
+const UniversalAudio = require('../managers/UniversalAudio');
 
 /**
  * Instantiates a new client. This is the entry point.
@@ -74,6 +75,13 @@ class Client extends BaseClient {
             }
         }
         return array;
+    }
+
+    /**
+     * UniversalAudio
+     */
+    get universalAudio() {
+        return new UniversalAudio(this);
     }
 }
 
