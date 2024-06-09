@@ -1,7 +1,8 @@
 const path = require('path'),
     fs = require('fs'),
-    crypto = require('crypto');
-const pkg = require('../../package.json');
+    crypto = require('crypto'),
+    pkg = require('../../package.json'),
+    BaseClient = require('../client/BaseClient'); // eslint-disable-line no-unused-vars
 
 /** The configuration */
 class defaultOptions {

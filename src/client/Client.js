@@ -1,5 +1,7 @@
 const BaseClient = require('./BaseClient');
+const Util = require('../util/Util');
 const defaultOptions = require('../util/defaultOptions'); // eslint-disable-line no-unused-vars
+const getItemsParams = require('../util/getItemsParams'); // eslint-disable-line no-unused-vars
 
 const Item = require('../structures/Item');
 
@@ -49,14 +51,15 @@ class Client extends BaseClient {
 
     /**
      * Gets items based on a query.
-     * @param {GetItemsParams} [params={}] The query params
+     * @param {getItemsParams} [params={}] The query params
      * @returns {Promise<Item[]>}
      */
     async getItems(params = {}) {
         const searchParams = new URLSearchParams();
         searchParams.set("userId", this.user.id);
+        params = Util.mergeDefault(new getItemsParams(this), params);
         Object.keys(params).forEach(k=>{
-            if (params[k] != undefined || params[k] != null) {
+            if (params[k] != undefined || params[k] != null || (Array.isArray(params[k]) && params[k].length > 0)) {
                 if (Array.isArray(params[k])) searchParams.set(k, params[k].join(','));
                 else searchParams.set(k, params[k]);
             }
