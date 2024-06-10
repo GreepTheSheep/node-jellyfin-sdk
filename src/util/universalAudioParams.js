@@ -26,18 +26,6 @@ class UniversalAudioParams {
         this.mediaSourceId = undefined;
 
         /**
-         * The device id of the client requesting. Used to stop encoding processes when needed.
-         * @type {?string}
-         */
-        this.deviceId = undefined;
-
-        /**
-         * Optional. The user id.
-         * @type {?string}
-         */
-        this.userId = undefined;
-
-        /**
          * The audio codec to transcode to.
          * @type {?string}
          */

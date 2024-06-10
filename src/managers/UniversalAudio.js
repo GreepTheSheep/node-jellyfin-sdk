@@ -15,13 +15,17 @@ class UniversalAudio {
     }
 
     /**
-     * Gets an audio stream, this require device ID.
+     * Gets an universal audio stream.
+     * <info>This is an old method by Jellyfin that works only if you're connected with a token,
+     * It's recommended to use {@link UniversalAudio#stream} instead.</info>
      * @param {string} itemId The Item id.
      * @param {universalAudioParams} params Optional parameters.
      * @returns {Promise<ArrayBuffer>}
      */
     async universalAudio(itemId, params = {}) {
         const searchParams = new URLSearchParams();
+        searchParams.set("userId", this.client.user.id);
+        searchParams.set("deviceId", this.client.options.deviceInfo.id);
         params = Util.mergeDefault(new universalAudioParams(this), params);
         Object.keys(params).forEach(k=>{
             if (Array.isArray(params[k]) && params[k].length > 0) searchParams.set(k, params[k].join(','));
