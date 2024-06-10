@@ -79,6 +79,7 @@ class Client extends BaseClient {
 
     /**
      * UniversalAudio
+     * @type {UniversalAudio}
      */
     get universalAudio() {
         return new UniversalAudio(this);

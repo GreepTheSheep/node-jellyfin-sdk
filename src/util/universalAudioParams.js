@@ -3,7 +3,7 @@ const Client = require("../client/Client"); // eslint-disable-line no-unused-var
 /**
  * The optional parameters to pass in {@link UniversalAudio#universalAudio} method
  */
-class GetItemsParams {
+class UniversalAudioParams {
     #client;
     constructor(client) {
         /**
@@ -120,4 +120,4 @@ class GetItemsParams {
     }
 }
 
-module.exports = GetItemsParams;
+module.exports = UniversalAudioParams;

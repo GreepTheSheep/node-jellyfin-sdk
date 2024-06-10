@@ -8,7 +8,7 @@
     "test": "eslint . && mocha --exit",
     "prepack": "tsc",
     "dts": "tsc",
-    "docs": "docgen -i ./src/**/*.js -c ./docs/index.yml -o ./docs/docs.json",
+    "docs": "docgen --source src --custom docs/index.yml --output docs/docs.json",
     "postinstall": "node ./postinstall.js"
   },
   "repository": {
@@ -30,7 +30,7 @@
     "node-fetch": "^2.7.0"
   },
   "devDependencies": {
-    "@discordjs/docgen": "^0.12.1",
+    "@discordjs/docgen": "^0.11.1",
     "dotenv": "^16.4.1",
     "eslint": "^8.56.0",
     "mocha": "^10.2.0",
