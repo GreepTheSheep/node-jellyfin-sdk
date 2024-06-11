@@ -17,5 +17,6 @@
             "error",
             "always"
         ]
-    }
+    },
+    "ignorePatterns": ["test/", "node_modules/", ".github/"]
 }
