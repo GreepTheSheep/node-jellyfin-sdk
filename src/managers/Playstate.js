@@ -1,6 +1,7 @@
 const Client = require("../client/Client"); // eslint-disable-line no-unused-vars
 const reportItemPlayedParams = require('../util/reportItemPlayedParams');
 const reportItemStoppedParams = require('../util/reportItemStoppedParams');
+const reportItemProgressParams = require('../util/reportItemProgressParams');
 const Util = require("../util/Util"); // eslint-disable-line no-unused-vars
 
 /**
@@ -25,7 +26,7 @@ class Playstate {
     async reportItemPlayed(itemId, playMethod = "DirectPlay", params = {}) {
         const searchParams = new URLSearchParams();
         searchParams.set("playMethod", playMethod);
-        params = Util.mergeDefault(new reportItemPlayedParams(this), params);
+        params = Util.mergeDefault(new reportItemPlayedParams(this.client), params);
         Object.keys(params).forEach(k=>{
             if (Array.isArray(params[k]) && params[k].length > 0) searchParams.set(k, params[k].join(','));
             else if (!Array.isArray(params[k]))
@@ -44,7 +45,7 @@ class Playstate {
      */
     async reportItemStopped(itemId, params = {}) {
         const searchParams = new URLSearchParams();
-        params = Util.mergeDefault(new reportItemStoppedParams(this), params);
+        params = Util.mergeDefault(new reportItemStoppedParams(this.client), params);
         Object.keys(params).forEach(k=>{
             if (Array.isArray(params[k]) && params[k].length > 0) searchParams.set(k, params[k].join(','));
             else if (!Array.isArray(params[k]))
@@ -53,6 +54,25 @@ class Playstate {
                 }
         });
         return await this.client.apiReq("PlayingItems/"+itemId+"?" + searchParams.toString(), "DELETE");
+    }
+
+    /**
+     * Reports a session's playback progress.
+     * @param {string} itemId The Item id.
+     * @param {reportItemProgressParams} [params={}] Optional parameters.
+     * @returns {Promise<void>}
+     */
+    async reportItemProgress(itemId, params = {}) {
+        const searchParams = new URLSearchParams();
+        params = Util.mergeDefault(new reportItemProgressParams(this.client), params);
+        Object.keys(params).forEach(k=>{
+            if (Array.isArray(params[k]) && params[k].length > 0) searchParams.set(k, params[k].join(','));
+            else if (!Array.isArray(params[k]))
+                if (params[k] != undefined || params[k] != null) {
+                    searchParams.set(k, params[k]);
+                }
+        });
+        return await this.client.apiReq("PlayingItems/"+itemId+"/Progress?" + searchParams.toString(), "POST");
     }
 }
 

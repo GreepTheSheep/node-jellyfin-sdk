@@ -1,4 +1,9 @@
 /**
+ * All available repeat mode.
+ * @typedef {"RepeatNone" | "RepeatAll" | "RepeatOne"} RepeatMode
+ */
+
+/**
  * All available Series Status.
  * @typedef {"Continuing" | "Ended" | "Unreleased"} SeriesStatus
  */
