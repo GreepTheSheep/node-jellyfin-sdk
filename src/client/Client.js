@@ -2,9 +2,10 @@ const BaseClient = require('./BaseClient');
 const Util = require('../util/Util');
 const defaultOptions = require('../util/defaultOptions'); // eslint-disable-line no-unused-vars
 const getItemsParams = require('../util/getItemsParams'); // eslint-disable-line no-unused-vars
-
 const Item = require('../structures/Item');
-const UniversalAudio = require('../managers/UniversalAudio');
+
+const UniversalAudio = require('../managers/UniversalAudio'),
+    Playstate = require('../managers/Playstate');
 
 /**
  * Instantiates a new client. This is the entry point.
@@ -24,6 +25,18 @@ class Client extends BaseClient {
         if (typeof options.clientInfo.version != "string") throw "Client Version must be in a string format";
         if (options.clientInfo.version.split(".").length < 1) throw "Client Version must contain at least a . (dot)";
         if (!options.clientInfo.version.split(".").every(v=>!isNaN(Number(v)))) throw "Client Version must contain numbers between dots";
+
+        /**
+         * UniversalAudio
+         * @type {UniversalAudio}
+         */
+        this.universalAudio = new UniversalAudio(this);
+
+        /**
+         * Playstate Manager
+         * @type {Playstate}
+         */
+        this.playstate = new Playstate(this);
     }
 
     /**
@@ -75,14 +88,6 @@ class Client extends BaseClient {
             }
         }
         return array;
-    }
-
-    /**
-     * UniversalAudio
-     * @type {UniversalAudio}
-     */
-    get universalAudio() {
-        return new UniversalAudio(this);
     }
 }
 

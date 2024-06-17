@@ -39,6 +39,11 @@
  */
 
 /**
+ * All available play methods
+ * @typedef {"Transcode" | "DirectStream" | "DirectPlay"} PlayMethod
+ */
+
+/**
  * @typedef {Object} ItemExternalUrl
  * @property {?string} Name The name of this external URL.
  * @property {?string} Url The URL of this external URL.
