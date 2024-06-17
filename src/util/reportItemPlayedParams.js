@@ -48,7 +48,7 @@ class reportItemPlayedParams {
          * @type {boolean}
          * @default true
          */
-        this.canSeek = undeffalseined;
+        this.canSeek = undefined;
     }
 }
 
