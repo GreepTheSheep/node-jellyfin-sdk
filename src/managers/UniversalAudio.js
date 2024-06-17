@@ -40,11 +40,11 @@ class UniversalAudio {
     /**
      * Gets an audio stream.
      * @param {string} itemId The Item id.
-     * @param {string} [container=""] The container (mp3, flac etc.). If passed, the file will be live converted by the server. Defaults to its original container.
+     * @param {string} [container=null] The container (mp3, flac etc.). If passed, the file will be live converted by the server. Defaults to its original container.
      * @param {audioStreamParams} [params={}] Optional parameters.
      * @returns {Promise<ArrayBuffer>}
      */
-    async stream(itemId, container = "", params = {}) {
+    async stream(itemId, container = null, params = {}) {
         const searchParams = new URLSearchParams();
         params = Util.mergeDefault(new universalAudioParams(this), params);
         Object.keys(params).forEach(k=>{
@@ -54,7 +54,7 @@ class UniversalAudio {
                     searchParams.set(k, params[k]);
                 }
         });
-        return await this.client.apiReqArrayBuffer("Audio/"+itemId+`/stream${container.length>0 ? ("."+container) : ""}?` + searchParams.toString());
+        return await this.client.apiReqArrayBuffer("Audio/"+itemId+`/stream${container != null && container.length>0 ? ("."+container) : ""}?` + searchParams.toString());
     }
 }
 
